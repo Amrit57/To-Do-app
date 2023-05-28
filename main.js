@@ -19,17 +19,6 @@ eval("/* module decorator */ module = __webpack_require__.nmd(module);\nvar __WE
 
 /***/ }),
 
-/***/ "./src/home.js":
-/*!*********************!*\
-  !*** ./src/home.js ***!
-  \*********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ hello)\n/* harmony export */ });\nfunction hello() {\n    console.log('hello')\n}\n\n//# sourceURL=webpack://to-do-app/./src/home.js?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -37,7 +26,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _home_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home.js */ \"./src/home.js\");\n\n\n\nfunction component() {\n  const element = (0,_home_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n  console.log('hehehe')\n  return element;\n}\n\ndocument.body.appendChild(component());\n\n//# sourceURL=webpack://to-do-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _todo_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo.js */ \"./src/todo.js\");\n\n\nfunction component() {\n  (0,_todo_js__WEBPACK_IMPORTED_MODULE_1__.accesFormInput)()\n  ;(0,_todo_js__WEBPACK_IMPORTED_MODULE_1__.formEventHandler)()\n}\n\n//# sourceURL=webpack://to-do-app/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/todo.js":
+/*!*********************!*\
+  !*** ./src/todo.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   accesFormInput: () => (/* binding */ accesFormInput),\n/* harmony export */   formEventHandler: () => (/* binding */ formEventHandler)\n/* harmony export */ });\nfunction CreateTodo(title, description, date, priority, project) {\n    return { title, description, date, priority, project };\n}\n\n\nfunction accesFormInput() {\n    const titleValue = document.querySelector('#title').value;\n    const descriptionValue = document.querySelector('#description-box').value;\n    const dateValue = document.querySelector('#date').value;\n    const selectedPriority = document.querySelector('#priority').value\n    const selectedProject = document.querySelector('#project').value;\n\n    const newTodo = CreateTodo(titleValue, descriptionValue, dateValue, selectedPriority, selectedProject)\n    const todoList = [];\n\n    function addtodoItem() {\n        todoList.push(newTodo);\n        console.log(todoList);\n    }\n    addtodoItem();\n}\n\nfunction formController() {\n    const showTodoForm = () => {\n        const todoInput = document.querySelector('.todo');\n        todoInput.classList.remove('displayNone');\n    }\n    const hideTodoForm = () => {\n        const todoInput = document.querySelector('.todo');\n        todoInput.classList.add('displayNone');\n    }\n    return { showTodoForm, hideTodoForm }\n}\n\n\nfunction formEventHandler() {\n    const event = formController()\n    const accessForm = accesFormInput;\n    // const addTodoObject = createtodoList()\n\n    const addTodoBtn = document.getElementById('add-todo-btn');\n    const cancelBtn = document.getElementById('cancel');\n    const addBtn = document.getElementById('add')\n\n    addTodoBtn.addEventListener('click', event.showTodoForm);\n    cancelBtn.addEventListener('click', event.hideTodoForm);\n    addBtn.addEventListener('click', accesFormInput)\n}\nformEventHandler();\n\n\n\n\n//# sourceURL=webpack://to-do-app/./src/todo.js?");
 
 /***/ })
 
