@@ -8,29 +8,33 @@
 :root {
   --normal-font: "Roboto", sans-serif;
   --dashboard-font: "Playfair", serif;
-  --dashboard-bg: #e2e8f0;
+  --dashboard-bg: #f0f9ff;
   --font-color: #0f172a;
-  --nav-link-bg: #fef08a;
+  --nav-link-bg: #22d3ee;
   --high-priority: #f87171;
   --low-priority: #22c55e;
-  --recurring-task:#d4d4d8;
-  --footer-bg: #d4d4d8;
+  --recurring-task:#999;
   --content-bg: #f8fafc;
+  --button-hover:#0284c7;
+  --border-color:rgba(0, 0, 0, 0.233);
+  --header-bg:#22d3ee;
+  --button-bg:#a5f3fc;
 }
 #container {
   background: blue;
+  color: var(--font-color);
   height: 100vh;
   width: 100vw;
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 9fr 1fr;
+  grid-template-rows: 60px 10fr;
   font-family: var(--normal-font);
-  color: var(--font-color);
 }
 
 #dashboard {
   background: var(--dashboard-bg);
-  grid-row: 1/2;
+  grid-row: 2/3;
+  grid-column: 1/2;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -47,57 +51,92 @@
 }
 #dashboard li {
   padding: 5px;
-  background: var(--nav-link-bg);
-  border: 2px solid;
+  background: var(--dashboard-bg);
+  border: 2px solid var(--border-color);
   display: flex;
   cursor: pointer;
   align-items: center;
-  border-radius: 10px;
+  gap: 5px;
+  border-radius: 5px;
+  width: 200px;
 }
-#dashboard #high-priority {
+#dashboard li:hover{
+  background: var(--nav-link-bg);
+  transition: 0.2s ease-in;
+
+}
+#dashboard #high-priority:hover {
   background: var(--high-priority);
 }
-#dashboard #low-priority {
+#dashboard #low-priority:hover {
   background: var(--low-priority);
 }
-#dashboard #recurring-priority {
+#dashboard #recurring-priority:hover {
   background: var(--recurring-task);
 }
-#dashboard svg {
+#dashboard svg, #search-svg {
   height: 25px;
 }
 #dashboard a {
   text-decoration: none;
   color: var(--font-color);
 }
-#search-section {
+
+#dashboard #add-task-btn{
+  cursor: pointer;
+  color: #0f172acc;
+}
+#dashboard #add-task-btn:hover{
+  color: black;
+  transition: ease-in 0.1s ;
+}
+#header{
   display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
   align-items: center;
-  flex-direction: row-reverse;
+  background: var(--header-bg);
+  grid-column: 1/3;
+  color: white;
+}
+#header #add-task-btn{
+  background: var(--button-bg);
+  padding: 10px;
+  width: 120px;
+  color:var(--font-color);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-style: italic;
+  margin-right: 50px;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  color: var(--font-color);
+}
+#header #add-task-btn:hover{
+  background: var(--button-hover);
+  transition: 0.2s ease-in-out;
+  color: white;
+}
+#search-section {
   position: relative;
+}
+#search-box:hover{
+background: var(--dashboard-bg);
 }
 #search-svg {
   position: absolute;
   right: 0px;
-  top: 2px;
+  top: 5px;
 }
 #search-box {
   padding: 8px;
-  width: 200px;
+  width: 400px;
   border-radius: 10px;
   outline: none;
   border: none;
-  font-family: var(--dashboard-font);
   font-size: 1rem;
-}
-#dashboard #add-task-btn{
-  cursor: pointer;
 }
 #content {
   background: var(--content-bg);
-  grid-row: 1/2;
-}
-#footer {
-  background: var(--footer-bg);
-  grid-column: 1/3;
+  grid-row: 2/3;
 }
