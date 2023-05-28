@@ -1,10 +1,6 @@
 import _ from 'lodash';
-import hello from './home.js'
-
+import { accesFormInput, formEventHandler } from './todo.js'
 function component() {
-  const element = hello();
-  console.log('hehehe')
-  return element;
+  accesFormInput()
+  formEventHandler()
 }
-
-document.body.appendChild(component());
