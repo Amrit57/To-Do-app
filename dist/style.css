@@ -50,6 +50,7 @@
   background: var(--nav-link-bg);
   border: 2px solid;
   display: flex;
+  cursor: pointer;
   align-items: center;
   border-radius: 10px;
 }
