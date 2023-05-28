@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,300;1,400;1,500;1,600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --normal-font: "Roboto", sans-serif;
+  --dashboard-font: "Playfair", serif;
+  --dashboard-bg: #e2e8f0;
+  --font-color: #0f172a;
+  --nav-link-bg: #fef08a;
+  --high-priority: #f87171;
+  --low-priority: #22c55e;
+  --recurring-task:#d4d4d8;
+  --footer-bg: #d4d4d8;
+  --content-bg: #f8fafc;
+}
+#container {
+  background: blue;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 9fr 1fr;
+  font-family: var(--normal-font);
+  color: var(--font-color);
+}
+
+#dashboard {
+  background: var(--dashboard-bg);
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 20px;
+  padding: 20px;
+  list-style: none;
+}
+#dashboard div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 1rem;
+}
+#dashboard li {
+  padding: 5px;
+  background: var(--nav-link-bg);
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+}
+#dashboard #high-priority {
+  background: var(--high-priority);
+}
+#dashboard #low-priority {
+  background: var(--low-priority);
+}
+#dashboard #recurring-priority {
+  background: var(--recurring-task);
+}
+#dashboard svg {
+  height: 25px;
+}
+#dashboard a {
+  text-decoration: none;
+  color: var(--font-color);
+}
+#search-section {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  position: relative;
+}
+#search-svg {
+  position: absolute;
+  right: 0px;
+  top: 2px;
+}
+#search-box {
+  padding: 8px;
+  width: 200px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  font-family: var(--dashboard-font);
+  font-size: 1rem;
+}
+#dashboard #add-task-btn{
+  cursor: pointer;
+}
+#content {
+  background: var(--content-bg);
+  grid-row: 1/2;
+}
+#footer {
+  background: var(--footer-bg);
+  grid-column: 1/3;
+}
