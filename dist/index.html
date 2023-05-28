@@ -21,7 +21,7 @@
         </svg>
         <input id="search-box" type="text" name="search" placeholder="Search">
       </div>
-      <button id="add-task-btn">Add Task </button>
+      <button id="add-todo-btn">Add Task </button>
     </header>
     <div id="dashboard">
       <div>
@@ -69,10 +69,45 @@
       </div>
       <div id="projects">
         <h3>Projects</h3>
-        <i id="add-task-btn"><b id="plus-sign">+</b> Add Task </i>
+        <li id="home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>home-circle-outline</title>
+            <path
+              d="M12 20C7.6 20 4 16.4 4 12S7.6 4 12 4 20 7.6 20 12 16.4 20 12 20M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M11 14H13V17H16V12H18L12 7L6 12H8V17H11V14" />
+          </svg><a href="#">Home</a></li>
+        <li id="work"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>briefcase-outline</title>
+            <path
+              d="M20,6C20.58,6 21.05,6.2 21.42,6.59C21.8,7 22,7.45 22,8V19C22,19.55 21.8,20 21.42,20.41C21.05,20.8 20.58,21 20,21H4C3.42,21 2.95,20.8 2.58,20.41C2.2,20 2,19.55 2,19V8C2,7.45 2.2,7 2.58,6.59C2.95,6.2 3.42,6 4,6H8V4C8,3.42 8.2,2.95 8.58,2.58C8.95,2.2 9.42,2 10,2H14C14.58,2 15.05,2.2 15.42,2.58C15.8,2.95 16,3.42 16,4V6H20M4,8V19H20V8H4M14,6V4H10V6H14Z" />
+          </svg><a href="#">Work</a></li>
+        <i id="add-project-btn"><b id="plus-sign">+</b> Add Project </i>
       </div>
     </div>
-    <div id="content">this is main content</div>
+    <div id="content">
+      <div class="todo">
+        <div class="title-date">
+          <input type="text" placeholder="Title" name="title" id="title">
+          <input type="date" name="date" id="date">
+          <div class="description">
+            <textarea placeholder="Write description" name="description" id="description-box" maxlength="100" cols="50"
+              rows="3"></textarea>
+          </div>
+          <div class="select-btns-wrapper">
+            <select name="priority" id="priority">
+              <option selected value="empty"> Select Priority</option>
+              <option value="High">High priority</option>
+              <option value="Medium">Medium priority</option>
+              <option value="Low">Low priority</option>
+            </select>
+            <select name="project" id="project">
+              <option selected value="empty">Select Project</option>
+              <option value="Home">Home</option>
+              <option value="work">Work</option>
+            </select>
+            <button id="add">Add</button><button id="cancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 
