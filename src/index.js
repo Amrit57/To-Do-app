@@ -1,6 +1,7 @@
 import _ from 'lodash';
-import { accesFormInput, formEventHandler } from './todo.js'
-function component() {
-  accesFormInput()
-  formEventHandler()
+import { addTodoItems, formEventHandler } from './todo.js'
+
+
+function components() {
+  addTodoItems()
 }
