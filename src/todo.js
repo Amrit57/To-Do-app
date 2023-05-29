@@ -44,10 +44,9 @@ function addTodoItems() {
 
 }
 
-const contentWrapper = document.getElementById('content');
-const itemWrapper = document.createElement('div');
-itemWrapper.classList.add('item-wrapper');
 //Render the todo-items.
+const itemWrapper = document.querySelector('.item-wrapper');
+const todoItem = document.createElement('div');
 function renderTodoList(todoList) {
     console.log("run")
     let list;
@@ -55,7 +54,6 @@ function renderTodoList(todoList) {
         list = todoList[i];
     }
 
-    const todoItem = document.createElement('div');
     todoItem.classList.add('todo-item');
 
     if (list.priority === 'high') {
@@ -76,11 +74,10 @@ function renderTodoList(todoList) {
         <p>${list.date} </p>
         <p>${list.project}</p>
       </div>
-      <button class="edit">Edit</button><button class="cancel">X</button>`
+      <button class="edit">Edit</button><button class="delete cancel">X</button>`
 
-    itemWrapper.appendChild(todoItem);
 }
-contentWrapper.appendChild(itemWrapper);
+itemWrapper.appendChild(todoItem);
 
 function formEventHandler() {
     const event = formController()
@@ -91,7 +88,15 @@ function formEventHandler() {
 
     addTodoBtn.addEventListener('click', event.showTodoForm);
     cancelBtn.addEventListener('click', event.hideTodoForm);
-    addBtn.addEventListener('click', addTodoItems)
+    addBtn.addEventListener('click', addTodoItems);
+
+    //deletes toditems from list
+    const deleteBtns = document.querySelectorAll('.delete')
+    deleteBtns.forEach(btn => {
+        btn.addEventListener('click', function deleteTodoItem(e) {
+            e.target.parentElement.remove();
+        });
+    })
 }
 formEventHandler();
 
