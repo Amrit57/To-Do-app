@@ -14,21 +14,25 @@ function formController() {
         const todoInput = document.querySelector('.todo-form');
         todoInput.classList.add('displayNone');
     }
-    return { showTodoForm, hideTodoForm }
+    function deleteTodoItem(e) {
+        e.target.parentElement.remove();
+    }
+
+    return { showTodoForm, hideTodoForm, deleteTodoItem }
 }
 
 const todoList = []; //array which holds list of objects/todo-items.
 
 //Access value from todo-form and adds items into the array.
 function addTodoItems() {
-    const titleValue = document.querySelector('#title').value;
-    const descriptionValue = document.querySelector('#description-box').value;
-    const dateValue = document.querySelector('#date').value;
-    const selectedPriority = document.querySelector('#priority').value;
-    const selectedProject = document.querySelector('#project').value;
+    const titleValue = document.querySelector('#title');
+    const descriptionValue = document.querySelector('#description-box');
+    const dateValue = document.querySelector('#date');
+    const selectedPriority = document.querySelector('#priority');
+    const selectedProject = document.querySelector('#project');
 
     //New object/todo-item is created by calling above factory function.
-    const newTodo = CreateTodo(titleValue, descriptionValue, dateValue, selectedPriority, selectedProject)
+    const newTodo = CreateTodo(titleValue.value, descriptionValue.value, dateValue.value, selectedPriority.value, selectedProject.value)
     if (newTodo.title === '' || newTodo.description === '') {
         return alert("Please fill up atleast title and desciption.")
     } else {
@@ -41,14 +45,22 @@ function addTodoItems() {
     }
     renderTodoList(todoList);
 
+    function updateInputForm() {
+        console.log(titleValue.value);
+        titleValue.value = '';
+        descriptionValue.value = '';
+        dateValue.value = '';
+        selectedPriority.value = '';
+        selectedProject.value = '';
+    }
+    updateInputForm()
 
 }
 
 //Render the todo-items.
 const itemWrapper = document.querySelector('.item-wrapper');
-const todoItem = document.createElement('div');
 function renderTodoList(todoList) {
-    console.log("run")
+    const todoItem = document.createElement('div');
     let list;
     for (let i = 0; i < todoList.length; i++) {
         list = todoList[i];
@@ -67,7 +79,7 @@ function renderTodoList(todoList) {
     }
 
     todoItem.innerHTML = `
-      <input type="radio" class="radio">
+      <input type="checkbox" class="checkbox">
       <h3>${list.title}</h3>
       <p class="description">${list.description}</p>
       <div class="date-project">
@@ -76,8 +88,9 @@ function renderTodoList(todoList) {
       </div>
       <button class="edit">Edit</button><button class="delete cancel">X</button>`
 
+    itemWrapper.appendChild(todoItem);
 }
-itemWrapper.appendChild(todoItem);
+
 
 function formEventHandler() {
     const event = formController()
@@ -93,9 +106,7 @@ function formEventHandler() {
     //deletes toditems from list
     const deleteBtns = document.querySelectorAll('.delete')
     deleteBtns.forEach(btn => {
-        btn.addEventListener('click', function deleteTodoItem(e) {
-            e.target.parentElement.remove();
-        });
+        btn.onclick = (e) => event.deleteTodoItem(e);
     })
 }
 formEventHandler();
