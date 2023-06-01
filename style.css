@@ -229,7 +229,7 @@ button {
   align-items: center;
   border-radius: 10px;
 }
-.radio {
+.checkbox {
   cursor: pointer;
   height: 20px;
   width: 20px;
